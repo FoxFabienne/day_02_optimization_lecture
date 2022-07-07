@@ -71,10 +71,10 @@
 
     \begin{frame}{Optimization}
       Traditionally, optimization means minimizing using a cost function $f(x)$.
-      Given the cost, we must find the cheapest point $x_min$ on the function,
+      Given the cost, we must find the cheapest point $x^*$ on the function,
       or in other words,
       \begin{align}
-       x_{min} = \min_{x} f(x)        
+       x^* = \min_{x \in \mathbb{R}} f(x)        
       \end{align}
     \end{frame}
 
@@ -86,30 +86,63 @@
       \end{align}
 
     \begin{figure}
-      \includestandalone[scale=.6]{./figures/parabola}
-      \caption{The parabola funciton}
+      \includestandalone[scale=.7]{./figures/parabola}
     \end{figure}
     \end{frame}
+
+    \begin{frame}{Where is the minimum?}
+      \begin{figure}
+        \includestandalone[scale=.7]{./figures/parabola}
+      \end{figure}
+      In this case we immediately see it's at zero. Finding it algorithmically requires derivate information.
+    \end{frame}
+
 
     \section{Derivatives and Gradients}
     \begin{frame}{The derivative}
       \begin{align}
         \dfrac{d f(x)}{dx} = \lim_{h \rightarrow 0} \dfrac{f(x + h) - f(x)}{h}
       \end{align}
-
+      \begin{figure}
+        \includestandalone[scale=.7]{./figures/parabola_derivative}
+      \end{figure}
       \note{TODO}
+    \end{frame}
+
+    \begin{frame}{Derivation of the parabola derivative}
+      TODO
+    \end{frame}
+
+    \begin{frame}{Steepest descent on the parabola}
+      \begin{align}
+        x_n = x_{n-1} - \alpha \cdot \dfrac{d f}{dx}
+      \end{align}
+      Working with $x_0 = 5$ and $\alpha = 0.1$ for $25$ steps leads to: 
+      \begin{figure}
+        \includestandalone[scale=0.7]{./figures/parabola_opt}
+      \end{figure}
+    \end{frame}
+
+    \begin{frame}{Multidimensional problems}
+      \begin{align}
+        f(x, y) = (a - x)^2 + b(y - x^2)^2
+      \end{align}
+      \begin{figure}
+        \includestandalone[scale=0.7]{./figures/rosenbrock}
+      \end{figure}
     \end{frame}
 
     \begin{frame}{The gradient}
       \begin{align}
-        \nabla \mathbf{x} = \dfrac{f(x + h) - f(x)}{h}
+        \nabla \mathbf{x}
       \end{align}
 
       \note{TODO}
     \end{frame}
 
-
-
+    \begin{frame}{Gradient descent}
+      TODO
+    \end{frame}
 
     \section{Optimization}
     \begin{frame}{Frame 2}
