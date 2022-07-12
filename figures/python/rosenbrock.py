@@ -12,6 +12,12 @@ def rosenbrock(x, a=1., b=100.):
     return (a - x[0])**2 + b*(x[1] - x[0]**2)**2
 
 
+def rosen_grad(x, a=1., b=100.):
+    return np.array(
+        [-2.*a + 2*x[0] - 4*b*x[1]*x[0] + 4*b*x[0]**3,
+        2*b*x[1] - 2*b*x[0]**2]
+    )
+
 
 if __name__ == '__main__':
     x = np.linspace(-2, 2, num=50)
@@ -24,17 +30,18 @@ if __name__ == '__main__':
     plt.colorbar()
     plt.show()
 
-    grad_ros = jax.grad(rosenbrock)
+    jax_grad_ros = jax.grad(rosenbrock)
 
     start_pos = np.array((0.1, 3.))
     step_size = 0.01
-    alpha = 0.0 # 0.8, 0.0
+    alpha = 0.8 # 0.8, 0.0
     step_total = 600
 
     pos_list = [start_pos]
     grad = np.array((0.0, 0.0))
     for _ in range(step_total):
-        nabla = grad_ros(pos_list[-1])
+        #nabla = jax_grad_ros(pos_list[-1])
+        nabla = rosen_grad(pos_list[-1])
         grad = grad * alpha - step_size * nabla /np.linalg.norm(nabla)
         pos = pos_list[-1] + grad
         pos_list.append(pos)
@@ -44,4 +51,5 @@ if __name__ == '__main__':
         plt.plot(pos[0], pos[1], ".r")
     plt.show()
 
-    write_movie(mx, my, rose, pos_list, "rosenbrock_gif_momentum", xlim=(-2, 2), ylim=(-1,3))
+    write_movie(mx, my, rose, pos_list, 
+        "rosenbrock_gif_momentum", xlim=(-2, 2), ylim=(-1,3))

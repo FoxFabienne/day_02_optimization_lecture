@@ -41,7 +41,7 @@ def write_movie(
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
 
-    with writer.saving(fig, f"{name}.mp4", 100):
+    with writer.saving(fig, f"{name}.gif", 100):
         for pos in pos_list:
             l.set_data(pos[0], pos[1])
             writer.grab_frame()
