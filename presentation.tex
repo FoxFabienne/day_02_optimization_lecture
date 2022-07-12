@@ -16,6 +16,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{multimedia}
+\usepackage{media9}
 
 % plotting.
 \usepackage{standalone}
@@ -110,7 +111,14 @@
     \end{frame}
 
     \begin{frame}{Derivation of the parabola derivative}
-      TODO
+      \begin{align}
+          \lim_{h \rightarrow 0} \dfrac{(x + h)^2 - x^2}{h} \Leftrightarrow &
+          \lim_{h \rightarrow 0} \dfrac{x^2 + 2x + h^2 - x^2}{h} \\
+          \Leftrightarrow \lim_{h \rightarrow 0} \dfrac{2xh + h^2}{h} \Leftrightarrow &
+          \lim_{h \rightarrow 0} \dfrac{h (2x + h)}{h}  \\
+          \Leftrightarrow \lim_{h \rightarrow 0} 2x + h \Leftrightarrow &
+          2x
+      \end{align}
     \end{frame}
 
     \begin{frame}{Steepest descent on the parabola}
@@ -143,6 +151,17 @@
     \begin{frame}{Gradient descent}
       TODO
     \end{frame}
+
+    \begin{frame}{Gradient descent on the Rosenbrock function}
+      \centering
+      \movie[width=5.45cm,height=4cm,poster]{Rosenbrock Optimization}{rosenbrock_momentum_0.0.mp4}
+    \end{frame}
+
+    \begin{frame}{Gradient descent with momentum}
+      \centering
+      \movie[width=5.45cm,height=4cm,poster]{Rosenbrock Optimization}{rosenbrock_momentum_0.8.mp4}
+    \end{frame}
+
 
     \section{Optimization}
     \begin{frame}{Frame 2}

@@ -2,26 +2,23 @@
 
 TARGET=presentation
 SOURCE=$(TARGET).tex
-BUILD=build
 NONSTOP=-interaction nonstopmode -halt-on-error -file-line-error
 
 all:
-	pdflatex --shell-escape -output-directory $(BUILD) $(SOURCE) 
-	biber 	 -output-directory $(BUILD) $(TARGET)	
-	pdflatex --shell-escape -output-directory $(BUILD) $(SOURCE)
-	pdflatex --shell-escape -output-directory $(BUILD) $(SOURCE)
+	pdflatex --shell-escape $(SOURCE) 
+	biber 	 $(TARGET)	
+	pdflatex --shell-escape $(SOURCE)
+	pdflatex --shell-escape $(SOURCE)
 
 latex:
-	pdflatex --shell-escape -output-directory $(BUILD) $(SOURCE)
-	pdflatex --shell-escape -output-directory $(BUILD) $(SOURCE)
+	pdflatex --shell-escape $(SOURCE)
+	pdflatex --shell-escape $(SOURCE)
 
 biber:
-	biber 	 -output-directory $(BUILD) $(TARGET)
+	biber 	 $(TARGET)
 
 view:
-	open ./$(BUILD)/$(TARGET).pdf &
+	open ./$(TARGET).pdf &
 
 clean:
 	rm *.log *.nav *.out *.snm *.toc *.fls *.fdb_latexmk *.aux *.synctex.gz *.bbl *.bcf *.blg *.run.xml
-	rm -rf $(BUILD)
-	mkdir $(BUILD)

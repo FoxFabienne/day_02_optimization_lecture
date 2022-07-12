@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     start_pos = np.array((0.1, 3.))
     step_size = 0.01
-    alpha = 0.8 # 0.8, 0.0
+    alpha = 0.0 # 0.8, 0.0
     step_total = 600
 
     pos_list = [start_pos]
