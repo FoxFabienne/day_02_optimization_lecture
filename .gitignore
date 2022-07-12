@@ -1,4 +1,5 @@
 .vscode
+*.pyc
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
