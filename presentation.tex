@@ -112,12 +112,12 @@
 
     \begin{frame}{Derivation of the parabola derivative}
       \begin{align}
-          \lim_{h \rightarrow 0} \dfrac{(x + h)^2 - x^2}{h} \Leftrightarrow &
-          \lim_{h \rightarrow 0} \dfrac{x^2 + 2x + h^2 - x^2}{h} \\
-          \Leftrightarrow \lim_{h \rightarrow 0} \dfrac{2xh + h^2}{h} \Leftrightarrow &
-          \lim_{h \rightarrow 0} \dfrac{h (2x + h)}{h}  \\
-          \Leftrightarrow \lim_{h \rightarrow 0} 2x + h \Leftrightarrow &
-          2x
+          \lim_{h \rightarrow 0} \dfrac{(x + h)^2 - x^2}{h} 
+          & \Leftrightarrow \lim_{h \rightarrow 0} \dfrac{x^2 + 2xh + h^2 - x^2}{h}   \\
+          & \Leftrightarrow \lim_{h \rightarrow 0} \dfrac{2xh + h^2}{h}  \\
+          & \Leftrightarrow \lim_{h \rightarrow 0} \dfrac{h (2x + h)}{h}  \\
+          & \Leftrightarrow \lim_{h \rightarrow 0} 2x + h \\
+          & \Leftrightarrow 2x
       \end{align}
     \end{frame}
 
@@ -129,6 +129,7 @@
       \begin{figure}
         \includestandalone[scale=0.7]{./figures/parabola_opt}
       \end{figure}
+      \note{TODO: Add plot of the derivative.}
     \end{frame}
 
     \begin{frame}{Multidimensional problems}
@@ -142,14 +143,32 @@
 
     \begin{frame}{The gradient}
       \begin{align}
-        \nabla \mathbf{x}
+        \nabla f = \begin{pmatrix}
+          \frac{\partial f}{\partial x_1} \\
+          \frac{\partial f}{\partial x_2} \\
+          \vdots \\
+          \frac{\partial f}{\partial x_n}
+        \end{pmatrix}
       \end{align}
+      \note{TODO}
+    \end{frame}
 
+    \begin{frame}{Rosenbrock gradient}
+      \begin{align}
+        \nabla f(x, y) = \begin{pmatrix}
+          -2a + 2x - 4byx + 4bx^3 \\
+          2by - 2bx^2 \\
+        \end{pmatrix}
+      \end{align}
       \note{TODO}
     \end{frame}
 
     \begin{frame}{Gradient descent}
-      TODO
+      $x_0 = [0.1, 3.]$,
+      $\alpha = 0.01 $
+      \begin{align}
+        x_n = x_{n-1} - \alpha \cdot \nabla f(x)
+      \end{align}
     \end{frame}
 
     \begin{frame}{Gradient descent on the Rosenbrock function}
