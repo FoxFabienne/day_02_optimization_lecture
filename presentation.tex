@@ -53,9 +53,9 @@
 
 \usetheme{metropolis}           % Use metropolis theme
 \setbeamertemplate{caption}[default]
-\title{Foundations of Machine Learning in Python}
+\title{Optimization for Machine Learning in Python}
 \institute{High Performance Computing and Analytics Lab, Uni Bonn}
-\author{Moritz Wolter}
+\author{Dr. Moritz Wolter}
 \date{\today}
 
 \titlegraphic{\includegraphics[width=2.00cm]{UNI_Bonn_Logo_Standard_RZ.pdf}}
@@ -69,7 +69,7 @@
     \note{TODO}
     \end{frame}
 
-
+    \section{Introduction}
     \begin{frame}{Optimization}
       Traditionally, optimization means minimizing using a cost function $f(x)$.
       Given the cost, we must find the cheapest point $x^*$ on the function,
@@ -98,8 +98,11 @@
       In this case we immediately see it's at zero. Finding it algorithmically requires derivate information.
     \end{frame}
 
+    \begin{frame}{Summary}
+      TODO
+    \end{frame}
 
-    \section{Derivatives and Gradients}
+    \section{The derivative}
     \begin{frame}{The derivative}
       \begin{align}
         \dfrac{d f(x)}{dx} = \lim_{h \rightarrow 0} \dfrac{f(x + h) - f(x)}{h}
@@ -110,6 +113,7 @@
       \note{TODO}
     \end{frame}
 
+    
     \begin{frame}{Derivation of the parabola derivative}
       \begin{align}
           \lim_{h \rightarrow 0} \dfrac{(x + h)^2 - x^2}{h} 
@@ -131,6 +135,11 @@
       }
     \end{frame}
 
+    \begin{frame}{Summary}
+      TODO
+    \end{frame}
+
+    \section{Optimization in a single dimension}
     \begin{frame}{Steepest descent}
       To find a minumum we descent along the gradient, with $n$ denoting the step number,
       $\alpha \in \mathbb{R}$ the step size and $\dfrac{d f}{dx}$ the derivate of $f$ along 
@@ -149,7 +158,11 @@
       %\note{TODO: Add plot of the derivative.}
     \end{frame}
 
+    \begin{frame}{Summary}
+      TODO
+    \end{frame}
 
+    \section{Optimization in many dimensions}
     \begin{frame}{Multidimensional problems}
       The Rosenbrock test function:
       \begin{align}
@@ -213,7 +226,11 @@
       \movie[width=5.45cm,height=4cm,poster]{Rosenbrock Optimization}{rosenbrock_momentum_0.8.mp4}
     \end{frame}
 
-    \section{Optimization}
+    \begin{frame}{summary}
+      TODO
+    \end{frame}
+
+    \section{Second order optimization}
     \begin{frame}{Second order optimization}
         TODO
     \end{frame}
