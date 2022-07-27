@@ -13,8 +13,8 @@ def write_movie(
     mz: np.ndarray,
     pos_list: list,
     name: Optional[str] = "grad_movie",
-    xlim: Optional[Tuple[int]] = (2, 2),
-    ylim: Optional[Tuple[int]] = (2, 2),
+    xlim: Optional[Tuple[int]] = (-2, 2),
+    ylim: Optional[Tuple[int]] = (-2, 2),
 ):
     """Write the optimization steps into a mp4-movie file.
 
@@ -34,14 +34,15 @@ def write_movie(
     writer = ffmpeg_writer(fps=15, metadata=metadata)
 
     fig = plt.figure()
-    plt.contourf(mx, my, mz, locator=ticker.LogLocator(), cmap=cm.viridis)
+    #plt.contourf(mx, my, mz, locator=ticker.LogLocator(), cmap=cm.viridis)
+    plt.contourf(mx, my, mz, cmap=cm.viridis)
     plt.colorbar()
     (l,) = plt.plot([], [], ".r")
 
     plt.xlim(xlim[0], xlim[1])
     plt.ylim(ylim[0], ylim[1])
 
-    with writer.saving(fig, f"{name}.gif", 100):
+    with writer.saving(fig, f"{name}.mp4", 100):
         for pos in pos_list:
             l.set_data(pos[0], pos[1])
             writer.grab_frame()

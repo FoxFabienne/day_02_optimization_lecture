@@ -25,12 +25,20 @@ if __name__ == '__main__':
     mx, my = np.meshgrid(x, y)
     x = np.stack((mx, my))
     rose = rosenbrock(x)
-    plt.contourf(mx, my, rose,
-        locator=ticker.LogLocator(), cmap=cm.viridis)
-    plt.colorbar()
-    plt.show()
 
     jax_grad_ros = jax.grad(rosenbrock)
+
+    grad_field = rosen_grad(x)
+    sign = np.sign(grad_field)
+    rescaled = sign*np.log(np.abs(grad_field))
+
+    plt.contourf(mx, my, rose,
+        locator=ticker.LogLocator(), cmap=cm.viridis)
+    plt.quiver(mx, my, rescaled[0], rescaled[1], headwidth=2, headlength=4)
+    # plt.savefig('quiver.png', transparent=True, dpi=400)
+    plt.show()
+
+
 
     start_pos = np.array((0.1, 3.))
     step_size = 0.01
