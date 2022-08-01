@@ -146,7 +146,7 @@
 
     \section{Optimization in a single dimension}
     \begin{frame}{Steepest descent}
-      To find a minumum, we descent along the gradient, with $n$ denoting the step number,
+      To find a minimum, we descent along the gradient, with $n$ denoting the step number,
       $\epsilon \in \mathbb{R}$ the step size and $\dfrac{d f}{dx}$ the derivate of $f$ along 
       $x \in \mathbb{R}$:
       \begin{align}
@@ -333,9 +333,25 @@
       \end{itemize}
     \end{frame}
 
-    %\section{Second order optimization}
-    %\begin{frame}{Second order optimization}
+    \section{Optimization for deep learning}
+    \begin{frame}{The chain rule}
     %    TODO
-    %\end{frame}
+    \end{frame}
+
+
+    \begin{frame}[allowframebreaks]{Optional reading}
+      \begin{itemize}
+        \item Mathematics for machine learning, \cite[Chapter 5, Vector Calculus]{deisenroth2020mathematics}
+        \item Deep learning, \cite[Chapter 8.2, Automatic Differentiation]{wright1999numerical}
+        \item Numerical optimization, \cite[Chapter 8, Optimization for Training Deep Models]{goodfellow2016deep}
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \frametitle{References}
+      \renewcommand*{\bibfont}{\scriptsize}
+      \setbeamertemplate{bibliography item}{\insertbiblabel}
+      \printbibliography
+  \end{frame}
 
 \end{document}
