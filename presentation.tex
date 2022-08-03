@@ -107,7 +107,7 @@
     \section{The derivative}
     \begin{frame}{The derivative}
       \begin{align}
-        \dfrac{d f(x)}{dx} = \lim_{h \rightarrow 0} \dfrac{f(x + h) - f(x)}{h}
+        \dfrac{\text{d} f(x)}{\text{d} x} = \lim_{h \rightarrow 0} \dfrac{f(x + h) - f(x)}{h}
       \end{align}
       \begin{figure}
         \includestandalone[scale=.7]{./figures/parabola_derivative}
@@ -124,7 +124,8 @@
           & = \lim_{h \rightarrow 0} 2x + h \\
           & = 2x
       \end{align}
-      \note{Derive on the board:
+      \note{Derive on the board. \\
+      Derivate of a parabola:
           \begin{align}
             \lim_{h \rightarrow 0} \dfrac{(x + h)^2 - x^2}{h} 
             & = \lim_{h \rightarrow 0} \dfrac{x^2 + 2xh + h^2 - x^2}{h}   \\
@@ -132,7 +133,25 @@
             & = \lim_{h \rightarrow 0} \dfrac{h (2x + h)}{h}  \\
             & = \lim_{h \rightarrow 0} 2x + h \\
             & = 2x
-        \end{align}
+     \end{align}}
+    \end{frame}
+    \begin{frame}{The derivate of a polynomial}
+      What is the derivative of the function $f(x) = x^n$?
+      \begin{align}
+        \dfrac{\text{d}f(x)}{\text{d} x} = n x^{n-1}  
+      \end{align}
+      \note{
+      Derivate of a polynomial $f(x)=x^n$ \cite{deisenroth2020mathematics}:
+      \begin{align}
+        \dfrac{\text{d}f(x)}{\text{d}x}
+            &= \lim_{h \rightarrow 0} \dfrac{f(x+h) - f(x)}{h}
+            = \lim_{h \rightarrow 0} \dfrac{(x + h)^n - x^n}{h} \\
+            &= \lim_{h \rightarrow 0} \dfrac{\sum_{i=0}^n \binom{n}{i} x^{n-1}h^i - x^n}{h} \\
+            &= \lim_{h \rightarrow 0} \dfrac{\sum_{i=1}^n \binom{n}{i} x^{n-1}h^i}{h} \\
+            &= \lim_{h \rightarrow 0} \sum_{i=1}^n \binom{n}{i} x^{n-1}h^{i-1} \\
+            &= \lim_{h \rightarrow 0} (\binom{n}{1}x^{n-1}) + \sum{i=2}{n} \binom{n}{i}x^{n-i}h^{i-1} \\
+            &= \frac{n!}{1!(n-1)!}x^{n-1} = nx^{n-1}.             
+      \end{align}
       }
     \end{frame}
 
@@ -142,6 +161,33 @@
         \item For any point on a differentiable function, the derivative provides a tangent slope.
         \item We will exclusively work with differentiable functions in this course.
       \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Differentiation Rules \cite{deisenroth2020mathematics}}
+      \begin{align}
+        \text{Product Rule:  }  &(f(x)g(x))'  &= f'(x)g(x) + f(x)g'(x) \\
+        \text{Quotient Rule:  } &(\dfrac{f(x)}{g(x)})' &= \dfrac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}  \\
+        \text{Sum Rule:  }      &(f(x) + g(x))' &= f'(x) + g'(x) \\
+        \text{Chain Rule:  }    &(g(f(x)))'     &= g'(f(x))f'(x)
+      \end{align}
+    \end{frame}
+
+    \begin{frame}{The logistic sigmoid \cite{goodfellow2016deep}}
+      \begin{align}
+        \sigma(x) = \dfrac{1}{1+e^{-x}}
+      \end{align}
+      \begin{figure}
+      \centering
+      \includestandalone[scale=.8]{./figures/sigmoid}
+      \end{figure}
+    \end{frame}
+
+    \begin{frame}{The Quotient Rule}
+      TODO
+    \end{frame}
+
+    \begin{frame}{The Chain Rule}
+      How to best differentiate $f(x) = \sigma( 2x + 1)$?
     \end{frame}
 
     \section{Optimization in a single dimension}
