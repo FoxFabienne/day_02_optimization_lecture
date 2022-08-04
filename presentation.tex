@@ -165,14 +165,15 @@
 
     \begin{frame}{Differentiation Rules \cite{deisenroth2020mathematics}}
       \begin{align}
-        \text{Product Rule:  }  &(f(x)g(x))'  &= f'(x)g(x) + f(x)g'(x) \\
-        \text{Quotient Rule:  } &(\dfrac{f(x)}{g(x)})' &= \dfrac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}  \\
-        \text{Sum Rule:  }      &(f(x) + g(x))' &= f'(x) + g'(x) \\
-        \text{Chain Rule:  }    &(g(f(x)))'     &= g'(f(x))f'(x)
+        \text{Product Rule:  }  &(g(x)h(x))'  &= g'(x)h(x) + g(x)h'(x) \\
+        \text{Quotient Rule:  } &(\dfrac{g(x)}{h(x)})' &= \dfrac{g'(x)h(x) - g(x)h'(x)}{(h(x))^2}  \\
+        \text{Sum Rule:  }      &(g(x) + h(x))' &= g'(x) + h'(x) \\
+        \text{Chain Rule:  }    &(g(h(x)))'     &= g'(h(x))h'(x)
       \end{align}
     \end{frame}
 
     \begin{frame}{The logistic sigmoid \cite{goodfellow2016deep}}
+      The sigmoid function $\sigma(x)$ is a common activation function.
       \begin{align}
         \sigma(x) = \dfrac{1}{1+e^{-x}}
       \end{align}
@@ -182,12 +183,47 @@
       \end{figure}
     \end{frame}
 
-    \begin{frame}{The Quotient Rule}
-      TODO
+    \begin{frame}[allowframebreaks]{Using the Quotient Rule}
+      \begin{align}
+        \dfrac{\text{d} \sigma(x)}{\text{dx}} &= \dfrac{\text{d} }{\text{dx}} \dfrac{1}{1+ e^{-x}} \\
+                                              &= \dfrac{\text{d} }{\text{dx}} \dfrac{1}{1+ e^{-x}} \cdot 1 \\
+                                              &= \dfrac{\text{d} }{\text{dx}} \dfrac{1}{1+ e^{-x}} \cdot \dfrac{e^x}{e^x} \\
+                                              &= \dfrac{\text{d} }{\text{dx}} \dfrac{e^x}{e^x + 1} \\
+        g(x) = e^x, h(x) = e^x + 1
+    \end{align}
+    $\;$
+    \begin{align}
+      \dfrac{\text{d} \sigma(x)}{\text{dx}} &= \dfrac{e^x \cdot (e^x + 1) - e^x \cdot e^x}{(e^x + 1)^2} \\
+                                            &= \dfrac{e^x \cdot e^x + e^x - e^x \cdot e^x}{(e^x + 1)^2} \\
+                                            &= \dfrac{e^x}{(e^x + 1)^2} \\
+                                            &= \dfrac{e^x}{(e^x + 1)}\dfrac{1}{(e^x + 1)} \\
+                                            &= \dfrac{e^x}{(e^x + 1)}(\dfrac{1 + e^x - e^x}{(e^x + 1)}) \\
+                                            &= \dfrac{e^x}{(e^x + 1)}(\dfrac{1 + e^x}{(e^x + 1)} - \dfrac{ e^x}{(e^x + 1)}) \\      
+                                            &= \dfrac{e^x}{(e^x + 1)}(1 - \dfrac{ e^x}{(e^x + 1)}) \\
+                                            &= \sigma(x)(1 - \sigma(x))
+    \end{align}
     \end{frame}
 
-    \begin{frame}{The Chain Rule}
-      How to best differentiate $f(x) = \sigma( 2x + 1)$?
+    \begin{frame}{The derivative of the sigmoidal function}
+    \begin{align}
+      \dfrac{\text{d}\sigma(x)}{\text{dx}} = \sigma(x) \cdot (1 - \sigma(x))
+    \end{align}
+    \begin{figure}
+      \centering
+      \includestandalone[scale=0.8]{./figures/sigmoid_prime}
+    \end{figure}
+    \end{frame}
+
+    \begin{frame}{Using the Chain Rule}
+      How do we best differentiate $f(x) = \sigma( ax + b)$?
+      \begin{align}
+        \dfrac{\text{d}f(x)}{\text{dx}} &= \dfrac{\text{d}\sigma( ax + b)}{\text{dx}}  \\
+      \end{align}
+      Chain Rule:    $(g(h(x)))' = g'(h(x))h'(x) $
+      \begin{align}
+        g(x) = \sigma(x), h(x) &= ax+b \\
+                               &\Rightarrow \sigma(ax+b)(1 - \sigma(ax+b))(a) 
+      \end{align}
     \end{frame}
 
     \section{Optimization in a single dimension}
@@ -366,10 +402,6 @@
       \movie[width=6.4cm,height=4.8cm,poster]{Rosenbrock Optimization}{rosenbrock_momentum_0.8.mp4}
     \end{frame}
 
-    %\begin{frame}{Automatic gradients}
-    % TODO 
-    %\end{frame}
-
     \begin{frame}{Summary}
       \begin{itemize}
         \item Gradient descent works in high-dimensional spaces!
@@ -378,12 +410,6 @@
         \item Just like in the 1d case, the gradient equals zero at local minima and saddle points.
       \end{itemize}
     \end{frame}
-
-    \section{Optimization for deep learning}
-    \begin{frame}{The chain rule}
-    %    TODO
-    \end{frame}
-
 
     \begin{frame}{Optional reading}
       \begin{itemize}
